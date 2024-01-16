@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>clock</title>
+  </head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Orbitron&display=swap");
+
+    body {
+      background-image: url("gojogeto.jpg");
+      background-size: cover;
+
+      background-repeat: no-repeat;
+    }
+
+    #clock1 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: "Orbitron";
+      letter-spacing: 10px;
+      font-weight: bold;
+      font-size: 40px;
+      color: rgb(80, 1, 80);
+    }
+  </style>
+
+  <body onload="startTime()">
+    <div class="digitalclock">
+      <div id="clock1"></div>
+    </div>
+
+    <script>
+      function startTime() {
+        var today = new Date();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s); // Corrected from s = checkTime(m);
+        document.getElementById("clock1").innerHTML = h + ":" + m + ":" + s;
+        var t = setTimeout(startTime, 500);
+      }
+
+      function checkTime(i) {
+        if (i < 10) {
+          i = "0" + i;
+        }
+        return i;
+      }
+    </script>
+  </body>
+</html>
